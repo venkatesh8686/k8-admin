@@ -1,0 +1,23 @@
+apiVersion: v1
+data:
+  mapRoles: |
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::277083512436:role/eksctl-expense-1-nodegroup-expense-NodeInstanceRole-AG7fG10rWWTQ
+      username: system:node:{{EC2PrivateDNSName}}
+  mapUsers: |
+      - groups:
+        - expense-traineee
+        userarn: arn:aws:iam::277083512436:user/venki
+        username: venki
+      - groups:
+        - eks-console-dashboard-restricted-access-group
+        userarn: arn:aws:iam::444455556666:user/my-user
+        username: my-user
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2024-11-17T08:59:34Z"
+  name: aws-auth
+  namespace: kube-system
+  uid: e1402d38-d111-42ac-8eff-e23fb1b2694a
